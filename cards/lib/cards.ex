@@ -19,6 +19,34 @@ defmodule Cards do
   """
 
   def create_deck do
-    ["Ace", "Two", "Three"]
+    suits = ["Hearts", "Diamonds", "Spades", "Clubs"]
+    values = ["Ace", "King", "Queen", "Jack", "Ten", "Nine", "Eight", "Seven", "Six", "Five", "Four", "Three", "Two"]
+
+    # Solution #1
+    # Use nested for loops to create a list of lists then flatten it
+    ####################################
+    # deck = for suit <- suits do
+    #   for value <- values do
+    #     "#{value} of #{suit}"
+    #   end
+    # end
+    # List.flatten(deck)
+
+    # Solution #2
+    # Elixir allows you to run multiple comprehensions at the same time
+    ##########################
+    for value <- values, suit <- suits do
+      "#{value} of #{suit}"
+    end
+
   end
+
+  def shuffle(deck) do
+    Enum.shuffle(deck)
+  end
+
+  def contains?(deck, card) do
+    Enum.member?(deck, card)
+  end
+
 end
