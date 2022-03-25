@@ -45,6 +45,10 @@ defmodule Cards do
     Enum.shuffle(deck)
   end
 
+  def deal(deck, hand_size) do
+    Enum.split(deck, hand_size)
+  end
+
   def contains?(deck, card) do
     Enum.member?(deck, card)
   end
