@@ -10,12 +10,6 @@ defmodule Cards do
 
   @doc """
   Returns a list of strings representing a deck of cards
-
-  ## Examples
-
-      iex> Cards.create_deck
-      ["Ace of Spades", "Two of Clubs", "Three of Diamonds"]
-
   """
 
   def create_deck do
@@ -43,13 +37,6 @@ defmodule Cards do
 
   @doc """
   Returns a list of cards in a random order based on the deck provided
-
-  ## Examples
-
-      iex> deck = Cards.create_deck
-      ["Ace of Spades", "Two of Clubs", "Three of Diamonds"]
-      iex> Cards.shuffle(deck)
-      ["Three of Diamonds", "Ace of Spades", "Two of Clubs"]
   """
 
   def shuffle(deck) do
@@ -63,15 +50,23 @@ defmodule Cards do
   ## Examples
 
       iex> deck = Cards.create_deck
-      ["Ace of Spades", "Two of Clubs", "Three of Diamonds"]
-      iex> {hand, deck} = Cards.deal(deck, 1)
+      iex> {hand, _deck} = Cards.deal(deck, 1)
       iex> hand
-      ["Ace of Spades"]
+      ["Ace of Hearts"]
   """
   def deal(deck, hand_size) do
     Enum.split(deck, hand_size)
   end
 
+  @doc """
+    Determines whether a card is within a given deck
+
+  ## Examples
+
+      iex> deck = Cards.create_deck
+      iex> Cards.contains?(deck, "Ace of Spades")
+      true
+  """
   def contains?(deck, card) do
     Enum.member?(deck, card)
   end
