@@ -53,4 +53,14 @@ defmodule Cards do
     Enum.member?(deck, card)
   end
 
+  def save(deck, file_name) do
+    binary = :erlang.term_to_binary(deck)
+    File.write(file_name, binary)
+  end
+
+  def load(file_name) do
+    {status, binary} = File.read(file_name)
+    :erlang.binary_to_term(binary)
+  end
+
 end
